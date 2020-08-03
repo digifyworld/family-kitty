@@ -1,0 +1,26 @@
+<mat-nav-list *ngIf="isAuthenticated"> 
+    <a mat-list-item routerLink="/memberss" (click)="onSidenavClose()">
+        <mat-icon>people</mat-icon>
+        <span class="nav-caption">Members</span>
+    </a>
+    <a mat-list-item routerLink="/collection" (click)="onSidenavClose()">
+        <mat-icon>attach_money</mat-icon>
+        <span class="nav-caption">Collection</span>
+    </a>
+    <a mat-list-item routerLink="/kitty-of-the-month" (click)="onSidenavClose()">
+        <mat-icon>attach_money</mat-icon>
+        <span class="nav-caption">Kitty of the Month</span>
+    </a>
+    <a mat-list-item routerLink="/winners" (click)="onSidenavClose()">
+        <mat-icon>attach_money</mat-icon>
+        <span class="nav-caption">Kitty Winners</span>
+    </a>
+    <a mat-list-item routerLink="/config-kitty" (click)="onSidenavClose()">
+        <mat-icon>settings</mat-icon>
+        <span class="nav-caption">Configure Kitty</span>
+    </a>
+    <a mat-list-item routerLink="/config-kitty" (click)="onLogout()">
+        <mat-icon>toggle_off</mat-icon>
+        <span class="nav-caption">Logout</span>
+    </a>
+</mat-nav-list>

@@ -1,0 +1,35 @@
+<!--<div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+        <mat-form-field>
+            <mat-label>Select an option</mat-label>
+            <mat-select [(value)]="selected" (selectionChange)="navigateTo($event.value)">
+                    <mat-option>None</mat-option>
+                <mat-option value="kitty">Collect Kitty</mat-option>
+                <mat-option value="punctuality">Collect Punctuality</mat-option>
+                <mat-option value="food">Collect Food</mat-option>
+                <mat-option value="game">Collect Game</mat-option>
+            </mat-select>
+        </mat-form-field>
+      
+    </div>
+
+    <router-outlet></router-outlet>-->
+
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <mat-tab-group>
+            <mat-tab label="Kitty">
+                <app-collect-kitty></app-collect-kitty>
+            </mat-tab>
+            <mat-tab label="Punctuality">
+                <app-collect-punctuality></app-collect-punctuality>
+            </mat-tab>
+        <!--    <mat-tab label="Food">
+                <app-collect-food></app-collect-food>
+            </mat-tab>
+            <mat-tab label="Game">
+                    <app-collect-game></app-collect-game>
+                </mat-tab>-->
+        </mat-tab-group>
+    </div>
+</div>

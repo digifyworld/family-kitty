@@ -1,0 +1,15 @@
+<div class="row">
+  <div *ngIf="isLoading" style="text-align: center;">
+    <app-load-data></app-load-data>
+  </div>
+  <div class="col-xs-12 col-md-6 col-md-offset-3">
+    <ul class="list-group">
+      <li
+          class="list-group-item"
+          [@list1]
+          *ngFor="let member of members; let i = index" (click)="onEditItem(i)">
+          {{ i+1 }}. {{ member.name }}
+        </li>
+    </ul>
+  </div>
+</div>

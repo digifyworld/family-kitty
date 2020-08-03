@@ -1,0 +1,53 @@
+<div class="row">
+
+  <div class="col-xs-12 col-md-6 col-md-offset-3">
+    <div *ngIf="isLoading" style="text-align: center;">
+      <app-load-data></app-load-data>
+    </div>
+
+  </div>
+</div>
+
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+
+      <div class="col-xs-8" *ngIf="members">
+
+        <br>
+
+        <mat-form-field>
+          <mat-label>Select Date</mat-label>
+          <input matInput [matDatepicker]="picker" (dateInput)="onDateChange($event.value)" name="calendar" ngModel #calendar="ngModel"
+            required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <!-- <mat-hint align="end">Not more then 60 characters long.</mat-hint> -->
+          <mat-error *ngIf="!calendar.valid && calendar.touched">Date is required</mat-error>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+      </div>
+      <hr>
+
+
+
+
+      <div class="col-xs-8" *ngIf="collectedAmount > 0">Total Collection - Rs. {{ collectedAmount }}
+        <hr>
+      </div>
+
+      <div class="col-xs-8" *ngFor="let member of members; let i=index">
+        <mat-checkbox id="members[{{i}}]" name="members[{{i}}]" (change)="valueChange(members[i], i,  $event)">
+          {{ member.name }}
+        </mat-checkbox>
+      </div>
+      <div class="col-xs-8">
+        <hr>
+        <button *ngIf="members" [disabled]="!f.valid || punctualityCollectedMember.length == 0" mat-raised-button color="primary" type="submit">Save Details</button>
+        <span *ngIf="members"> | </span>
+        <button  [disabled]="!f.valid" mat-raised-button color="warn" type="submit">Show Previous Collection</button>
+      </div>
+
+</div>
+</div>
+</form>

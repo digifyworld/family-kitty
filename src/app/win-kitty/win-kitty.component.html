@@ -3,13 +3,18 @@
         <app-load-data></app-load-data>
     </div>
     <div class="col-xs-12 col-md-6 col-md-offset-3">
-        <div  *ngIf="!winFlag" class="row">
+        <div *ngIf="!winFlag" class="row">
             <div class="col-xs-12" style="text-align: center;">
-                <button class="btn btn-warning" (click)="getWinner();" >Click me to get Kitty Winner of the Month</button>
+                <button class="btn btn-warning" (click)="getWinner();">Click me to get Kitty Winner of the Month</button>
             </div>
         </div>
-        <h2 *ngIf="winFlag" style="text-align: center;">Winner of the month: <span style="color: #5cb85c">{{ winnerName }}</span></h2>
-        <h3 style="text-align: center">Available Candidates</h3>
+        <h2 *ngIf="winFlag" style="text-align: center;">Winner of the month:
+            <span style="color: #5cb85c">{{ winnerName }}</span>
+            <a *ngIf="winFlag" href="https://wa.me/?text=I'm glad to inform that the Kitty Winner of the Month is : {{ winnerName }}"
+            data-original-title="whatsapp" rel="tooltip" class="btn btn-whatsapp" data-placement="left"> <img style="height:50px" src="../../assets/whatsapp.png"></a>
+        
+        </h2>
+       <h3 style="text-align: center">Available Candidates</h3>
         <ul class="list-group">
             <li class="list-group-item" *ngFor="let member of members; let i = index">
                 {{ i+1 }}. {{ member.name }}

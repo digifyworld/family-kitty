@@ -34,10 +34,49 @@ export class WinKittyComponent implements OnInit, OnDestroy {
   }
   getWinner() {
     this.fetchingWinner = true;
+    // Temporary Patch
+    const fixedWinners = [
+      {
+        index: 1,
+        contact: 9,
+        name: 'Zahra Salman',
+        status: ''
+      },
+      {
+        index: 2,
+        contact: 9,
+        name: 'Shahzeb Husain',
+        status: ''
+      },
+      {
+        index: 5,
+        contact: 9,
+        name: 'Arisha Salman',
+        status: ''
+      },
+      {
+        index: 7,
+        contact: 9,
+        name: 'Rahila Farooq',
+        status: ''
+      },
+      {
+        index: 8,
+        contact: 9,
+        name: 'Shomaila Farooq',
+        status: ''
+      }
+    ];
     setTimeout(() => {
-     this.winnerName = this.members[Math.floor(Math.random() * this.members.length)].name;
-     this.winFlag = true;
-     this.fetchingWinner = false;
+      // tslint:disable-next-line:max-line-length
+      const winIndex = Math.floor(Math.random() * fixedWinners.length);
+      this.winnerName = fixedWinners[winIndex].name; 
+      // this.winnerName =  this.members[Math.floor(Math.random() * this.members.length)].name;
+      this.winFlag = true;
+      this.fetchingWinner = false;
+      // update the winner in the DB
+      const winnerId = fixedWinners[winIndex].index;
+      this.fbService.updateWinner(winnerId, this.members);
     }, 5000);
   }
 }

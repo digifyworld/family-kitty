@@ -103,10 +103,21 @@ export class FirebaseStorageService {
                 'https://family-kitty.firebaseio.com/members.json'
             ).pipe(
                 map((data) => {
-                    const filteredData = data.filter((item) => item.status !== 'Y');
+                    const filteredData = data.filter((item) => (item.status !== 'Y'));
                     return filteredData;
                 }
                 )
             );
+    }
+    updateWinner(id: any, members: Member[]) {
+        const winner = new Member(members[id].name, members[id].contact, 'Y');
+        return this.http
+            .put(
+                'https://family-kitty.firebaseio.com//members/' + id + '.json',
+                winner
+            )
+            .subscribe(response => {
+                console.log(response);
+            });
     }
 }
